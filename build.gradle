@@ -33,17 +33,14 @@ repositories {
     maven {
         url "https://plugins.gradle.org/m2/"
     }
-    flatDir {
-        dirs 'libs'
-    }
 }
 
 dependencies {
     // < jooq >
     implementation 'org.jooq:jooq-codegen:3.11.9'
-    jooqRuntime 'mysql:mysql-connector-java' // for jooq code-gen
+    jooqRuntime 'mysql:mysql-connector-java:8.0.15' // for jooq code-gen
     //jooqRuntime group: 'com.microsoft.sqlserver', name: 'sqljdbc4', version: '4.0' // for jooq code-gen
-    jooqRuntime fileTree(dir: 'libs', include: '*.jar')
+//    jooqRuntime fileTree(dir: 'libs', include: '*.jar')
 
     implementation 'mysql:mysql-connector-java:8.0.15'
     //implementation group: 'com.microsoft.sqlserver', name: 'sqljdbc4', version: '4.0'
