@@ -1,0 +1,82 @@
+buildscript {
+    ext {
+        //load spring application.properties
+        props = new Properties()
+        file("src/main/resources/application.properties").withInputStream { props.load(it) }
+
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+plugins {
+    id 'nu.studer.jooq' version '3.0.2' // plugin to configure jooq more easily
+}
+
+apply plugin: 'java'
+
+group = 'me.mupu'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+dependencies {
+    // < jooq >
+    implementation 'org.jooq:jooq-codegen:3.11.9'
+    jooqRuntime 'mysql:mysql-connector-java' // for jooq code-gen
+    //jooqRuntime group: 'com.microsoft.sqlserver', name: 'sqljdbc4', version: '4.0' // for jooq code-gen
+    jooqRuntime fileTree(dir: 'libs', include: '*.jar')
+
+    implementation 'mysql:mysql-connector-java'
+    //implementation group: 'com.microsoft.sqlserver', name: 'sqljdbc4', version: '4.0'
+
+    // < lombok >
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // < libs folder >
+    implementation fileTree(dir: 'libs', include: '*.jar')
+}
+
+// # jooq configuration #
+jooq {
+    database(sourceSets.main) {
+        jdbc {
+            driver = props.getProperty("webserver.datasource.driver-class-name")
+            url = props.getProperty("webserver.datasource.url")
+            user = props.getProperty("webserver.datasource.username")
+            password = props.getProperty("webserver.datasource.password")
+        }
+        generator {
+            database {
+                name = 'org.jooq.meta.mysql.MySQLDatabase'
+                inputSchema = 'ibike' // database name
+            }
+            generate {
+                relations = true
+                deprecated = false
+                records = true
+                immutablePojos = false
+                fluentSetters = true
+            }
+            target {
+                directory = 'src/main/generated'
+            }
+        }
+    }
+}
