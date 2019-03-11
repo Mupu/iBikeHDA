@@ -1,4 +1,4 @@
-package me.mupu.ibikehda;
+package me.mupu.ibikehda.util;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
