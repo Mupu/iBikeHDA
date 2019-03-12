@@ -1,29 +1,37 @@
 package me.mupu.ibikehda.persistence.dao;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
-@Table(name = "user")
-public class User extends BaseEntitiy {
+@Getter
+@Setter
+@NoArgsConstructor
+@Table(name = "User")
+public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userID")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "UserID")
+    private long userID;
 
     @Column(name = "username")
     private String username;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "password")
+    private String password;
 
-    @Column(name = "confirmation_token")
-    private String confirmationToken;
+    @Column(name = "isAdmin")
+    private boolean isAdmin;
 
-    @Column(name = "reset_password_token")
-    private String resetPasswordToken;
+    public User(String username, String password) {
+        this(username, password, false);
+    }
 
+    public User(String username, String password, boolean isAdmin) {
+        this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
 }

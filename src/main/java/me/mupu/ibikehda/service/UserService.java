@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-
+    // todo implement
     @Autowired
-    UserRepository repository;
+    private UserRepository repository;
 
     public User findUser(String name){
         return repository.findFirstByUsername(name);
