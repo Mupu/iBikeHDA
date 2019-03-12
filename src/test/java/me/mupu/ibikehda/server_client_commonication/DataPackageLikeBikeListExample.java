@@ -1,4 +1,4 @@
-package me.mupu.ibikehda;
+package me.mupu.ibikehda.server_client_commonication;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

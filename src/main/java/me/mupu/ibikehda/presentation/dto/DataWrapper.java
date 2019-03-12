@@ -1,4 +1,4 @@
-package me.mupu.ibikehda;
+package me.mupu.ibikehda.presentation.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
