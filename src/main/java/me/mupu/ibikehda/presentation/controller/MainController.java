@@ -5,12 +5,19 @@ import lombok.var;
 import me.mupu.ibikehda.persistence.dao.User;
 import me.mupu.ibikehda.repository.UserRepository;
 import me.mupu.ibikehda.util.HashPasswordEncoder;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManagerFactory;
+
+import java.io.File;
+import java.nio.file.Paths;
+import java.util.Iterator;
 
 import static jooqGen.Tables.*;
 
@@ -29,7 +36,8 @@ public class MainController {
     @PostConstruct
     public void start() {
         // todo your code here
-        exampleData();
+//        exampleData();
+        exempleXMLReader();
     }
 
     private void exampleData() {
@@ -55,6 +63,25 @@ public class MainController {
         s.getTransaction().commit();
 //
         System.out.println(userRepository.findFirstByUsername("MA1").getUsername());
+    }
+
+    private void exempleXMLReader() {
+        try {
+            SAXReader saxReader = new SAXReader();
+            Document document = saxReader.read(Paths.get(getClass().getClassLoader().getResource("ebike.xml").toURI()).toFile());
+
+            // ebikeliste
+            Element rootElement = document.getRootElement();
+
+            rootElement.elementIterator().forEachRemaining(e -> {
+                System.out.println(e.getName());
+                e.attributeIterator().forEachRemaining(a -> System.out.println(a.getData()));
+                System.out.println(e.getText());
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

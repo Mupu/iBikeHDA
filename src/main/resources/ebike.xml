@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ebikeliste>
+    <ebike bikenr= "1801" standort="h_da_D14" gaenge="9" antrieb="Trek Active Line PLUS" akku="100">LQBIKE Active 26 Zoll</ebike>
+    <ebike bikenr= "1802" standort="h_da_D15" gaenge="9" antrieb="Mountain Active" akku="70">KIBIKE Active 27,5 Zoll</ebike>
+</ebikeliste>
