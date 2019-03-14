@@ -22,6 +22,7 @@ public class ClientExample {
                 var d = (DataPackageLikeBikeListExample) dw.getData();
                 System.out.println("mathod 1 " + d);
                 d.getStations().forEach(System.out::println);
+                System.out.println("bikestatus " + d.getBike().getBikeStatus().getStatus());
             }
 
         } catch (Exception ignored) {

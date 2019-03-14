@@ -4,12 +4,13 @@ import lombok.*;
 import me.mupu.ibikehda.persistence.dao.enums.TerminalTypeEnum;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name = "TerminalType")
-public class TerminalType {
+public class TerminalType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,4 +21,7 @@ public class TerminalType {
     @Column(name = "Type")
     private TerminalTypeEnum type;
 
+    public TerminalType(TerminalTypeEnum type) {
+        this.type = type;
+    }
 }

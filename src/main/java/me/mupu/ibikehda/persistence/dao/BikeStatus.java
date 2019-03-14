@@ -6,12 +6,13 @@ import me.mupu.ibikehda.persistence.dao.enums.BikeStatusEnum;
 import me.mupu.ibikehda.persistence.dao.enums.PlugTypeEnum;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name = "BikeStatus")
-public class BikeStatus {
+public class BikeStatus implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,4 +23,7 @@ public class BikeStatus {
     @Column(name = "Status")
     private BikeStatusEnum status;
 
+    public BikeStatus(BikeStatusEnum status) {
+        this.status = status;
+    }
 }

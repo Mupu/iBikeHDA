@@ -1,6 +1,10 @@
 package me.mupu.ibikehda.server_client_commonication;
 
 import lombok.var;
+import me.mupu.ibikehda.persistence.dao.Bike;
+import me.mupu.ibikehda.persistence.dao.BikeStatus;
+import me.mupu.ibikehda.persistence.dao.enums.BikeStatusEnum;
+import me.mupu.ibikehda.persistence.dao.enums.PaymentMethod;
 
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -42,7 +46,10 @@ public class ServerExample {
             x.add("station1");
             x.add("station2");
 
-            var dwe = new DataWrapper("bikeList", new DataPackageLikeBikeListExample(x));
+            var dwe = new DataWrapper("bikeList",
+                    new DataPackageLikeBikeListExample(x,
+                            new Bike(5, "4", 4, "5", 4,
+                                    new BikeStatus(BikeStatusEnum.READY),null,null)));
             try {
                 var oos = new ObjectOutputStream(s.getOutputStream());
                 oos.writeObject(dwe);

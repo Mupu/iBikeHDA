@@ -3,15 +3,17 @@ package me.mupu.ibikehda.persistence.dao;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import me.mupu.ibikehda.persistence.dao.enums.BikeStatusEnum;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name = "Bike")
-public class Bike {
-
+public class Bike implements Serializable {
+    // todo capsule bikestatus away
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "BikeID")
@@ -27,18 +29,42 @@ public class Bike {
     private int gearCount;
 
     @Column(name = "DriveTechnology")
-    private int driveTechnology;
+    private String driveTechnology;
 
     @Column(name = "BatteryLifePercent")
     private int batteryLifePercent;
 
     @ManyToOne
-    private BikeStatus bikeStatusID;
+    @JoinColumn(name = "BikeStatusID")
+    private BikeStatus bikeStatus;
 
     @ManyToOne
-    private Station mainStationID;
+    @JoinColumn(name = "UserID")
+    private User customer;
 
     @ManyToOne
-    private Station currentStationID;
+    @JoinColumn(name = "MainStationID")
+    private Station mainStation;
 
+    @ManyToOne
+    @JoinColumn(name = "CurrentStationID")
+    private Station currentStation;
+
+    public Bike(int bikeNumber, String designation, int gearCount, String driveTechnology,
+                int batteryLifePercent, BikeStatus bikeStatus, Station mainStation,
+                Station currentStation) {
+        this.bikeNumber = bikeNumber;
+        this.designation = designation;
+        this.gearCount = gearCount;
+        this.driveTechnology = driveTechnology;
+        this.batteryLifePercent = batteryLifePercent;
+        this.bikeStatus = bikeStatus;
+        this.mainStation = mainStation;
+        this.currentStation = currentStation;
+    }
+
+    public Bike(int bikeNumber, String designation, int gearCount, String driveTechnology, int batteryLifePercent, BikeStatus bikeStatus) {
+        this(bikeNumber, designation, gearCount, driveTechnology, batteryLifePercent,
+                bikeStatus, null, null);
+    }
 }

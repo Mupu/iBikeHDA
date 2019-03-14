@@ -1,15 +1,18 @@
 package me.mupu.ibikehda.persistence.dao;
 
+import com.sun.xml.internal.ws.developer.UsesJAXBContext;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @Table(name = "User")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +27,9 @@ public class User {
 
     @Column(name = "isAdmin")
     private boolean isAdmin;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Bike> rentedBikes;
 
     public User(String username, String password) {
         this(username, password, false);
