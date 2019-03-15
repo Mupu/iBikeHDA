@@ -30,5 +30,4 @@ public interface BikeRepository extends JpaRepository<Bike, Long>  {
 
     Set<Bike> findAllByBikeStatus(BikeStatus status);
 
-
 }

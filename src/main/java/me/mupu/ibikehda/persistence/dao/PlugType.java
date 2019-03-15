@@ -7,7 +7,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "PlugType")
@@ -22,12 +23,7 @@ public class PlugType implements Serializable {
     @Column(name = "Type")
     private PlugTypeEnum type;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "Station_PlugType",
-            joinColumns = { @JoinColumn(name = "StationID") },
-            inverseJoinColumns = { @JoinColumn(name = "PlugTypeID") }
-    )
+    @ManyToMany(mappedBy = "plugs")
     private Set<Station> stations;
 
     public PlugType(PlugTypeEnum type) {

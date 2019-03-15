@@ -73,4 +73,4 @@ CREATE TABLE IF NOT EXISTS Bike (
 	PRIMARY KEY (BikeID)
 );
 
-INSERT INTO hibernate_sequence VALUE (0);
+INSERT INTO hibernate_sequence VALUE (1);

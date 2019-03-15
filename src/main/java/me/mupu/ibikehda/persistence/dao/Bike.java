@@ -1,14 +1,17 @@
 package me.mupu.ibikehda.persistence.dao;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import me.mupu.ibikehda.persistence.dao.enums.BikeStatusEnum;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "Bike")

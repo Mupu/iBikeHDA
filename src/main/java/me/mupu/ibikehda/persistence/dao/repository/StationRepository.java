@@ -3,6 +3,7 @@ package me.mupu.ibikehda.persistence.dao.repository;
 import me.mupu.ibikehda.persistence.dao.Station;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 

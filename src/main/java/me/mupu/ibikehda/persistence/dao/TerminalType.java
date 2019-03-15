@@ -6,7 +6,8 @@ import me.mupu.ibikehda.persistence.dao.enums.TerminalTypeEnum;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "TerminalType")
