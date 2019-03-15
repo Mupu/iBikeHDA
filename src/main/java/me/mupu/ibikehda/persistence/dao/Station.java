@@ -1,15 +1,20 @@
 package me.mupu.ibikehda.persistence.dao;
 
 import lombok.*;
+import me.mupu.ibikehda.persistence.dao.enums.TerminalTypeEnum;
+import me.mupu.ibikehda.persistence.dao.repository.TerminalTypeRepository;
+import me.mupu.ibikehda.util.SpringContext;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -41,7 +46,6 @@ public class Station implements Serializable {
     @JoinColumn(name = "TerminalTypeID")
     private TerminalType terminalType;
 
-
     @ManyToMany
     @JoinTable(
             name = "Station_PlugType",
@@ -49,7 +53,6 @@ public class Station implements Serializable {
             inverseJoinColumns = { @JoinColumn(name = "PlugTypeID") }
     )
     private Set<PlugType> plugs;
-
 
     @OneToMany(mappedBy = "mainStation")
     private Set<Bike> bikes;

@@ -15,6 +15,8 @@ public class SpringContext implements ApplicationContextAware {
      * Example: SpringContext.getBean(EntityManagerFactory.class)
      */
     public static <T extends Object> T getBean(Class<T> beanClass) {
+        if (applicationContext == null)
+            throw  new RuntimeException("Spring not loaded yet");
         return applicationContext.getBean(beanClass);
     }
 

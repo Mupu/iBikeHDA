@@ -6,6 +6,7 @@ import me.mupu.ibikehda.persistence.dao.enums.TerminalTypeEnum;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
