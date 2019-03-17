@@ -7,7 +7,6 @@ import me.mupu.ibikehda.persistence.dao.enums.PlugTypeEnum;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,5 +25,12 @@ public class BikeStatus implements Serializable {
 
     public BikeStatus(BikeStatusEnum status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "[BikeStatusID: " + bikeStatusID
+                + ", Status: " + status
+                + "]";
     }
 }

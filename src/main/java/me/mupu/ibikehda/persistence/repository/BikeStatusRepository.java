@@ -1,4 +1,4 @@
-package me.mupu.ibikehda.persistence.dao.repository;
+package me.mupu.ibikehda.persistence.repository;
 
 import me.mupu.ibikehda.persistence.dao.BikeStatus;
 import me.mupu.ibikehda.persistence.dao.enums.BikeStatusEnum;

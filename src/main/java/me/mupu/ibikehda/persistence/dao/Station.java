@@ -1,20 +1,11 @@
 package me.mupu.ibikehda.persistence.dao;
 
 import lombok.*;
-import me.mupu.ibikehda.persistence.dao.enums.TerminalTypeEnum;
-import me.mupu.ibikehda.persistence.dao.repository.TerminalTypeRepository;
-import me.mupu.ibikehda.util.SpringContext;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
-@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -52,10 +43,10 @@ public class Station implements Serializable {
             joinColumns = { @JoinColumn(name = "StationID") },
             inverseJoinColumns = { @JoinColumn(name = "PlugTypeID") }
     )
-    private Set<PlugType> plugs;
+    private List<PlugType> plugs;
 
     @OneToMany(mappedBy = "mainStation")
-    private Set<Bike> bikes;
+    private List<Bike> bikes;
 
     public Station(String phoneNumber, String place, String street, String houseNumber, String coordinates, TerminalType terminalType) {
         this.phoneNumber = phoneNumber;
@@ -64,5 +55,17 @@ public class Station implements Serializable {
         this.houseNumber = houseNumber;
         this.coordinates = coordinates;
         this.terminalType = terminalType;
+    }
+
+    @Override
+    public String toString() {
+        return "[StationID: " + stationID
+                + ", PhoneNumber: " + phoneNumber
+                + ", Place: " + place
+                + ", Street: " + street
+                + ", HouseNumber: " + houseNumber
+                + ", Coordinates: " + coordinates
+                + ", TerminalType: " + terminalType
+                + "]";
     }
 }

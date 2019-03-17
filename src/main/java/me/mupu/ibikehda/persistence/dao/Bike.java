@@ -1,13 +1,10 @@
 package me.mupu.ibikehda.persistence.dao;
 
 import lombok.*;
-import me.mupu.ibikehda.persistence.dao.enums.BikeStatusEnum;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -67,5 +64,18 @@ public class Bike implements Serializable {
     public Bike(int bikeNumber, String designation, int gearCount, String driveTechnology, int batteryLifePercent, BikeStatus bikeStatus) {
         this(bikeNumber, designation, gearCount, driveTechnology, batteryLifePercent,
                 bikeStatus, null, null);
+    }
+
+    @Override
+    public String toString() {
+        return "[BikeID: " + bikeID
+                + ", BikeNumber: " + bikeNumber
+                + ", Designation: " + designation
+                + ", GearCount: " + gearCount
+                + ", DriveTechnology: " + driveTechnology
+                + ", BatteryLifePercent: " + batteryLifePercent
+                + ", Status: " + bikeStatus
+                + ", Customer: " + customer
+                + "]";
     }
 }

@@ -5,9 +5,9 @@ import me.mupu.ibikehda.persistence.dao.enums.PlugTypeEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
-@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,12 +24,15 @@ public class PlugType implements Serializable {
     @Column(name = "Type")
     private PlugTypeEnum type;
 
-    @ManyToMany(mappedBy = "plugs")
-    private Set<Station> stations;
-
     public PlugType(PlugTypeEnum type) {
         this.type = type;
     }
 
 
+    @Override
+    public String toString() {
+        return "[PlugTypeID: " + plugTypeID
+                + ", Type: " + type
+                + "]";
+    }
 }

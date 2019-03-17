@@ -5,9 +5,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-@ToString
 @Entity
 @Getter
 @Setter
@@ -29,9 +30,6 @@ public class User implements Serializable {
     @Column(name = "isAdmin")
     private boolean isAdmin;
 
-    @OneToMany(mappedBy = "customer")
-    private Set<Bike> rentedBikes;
-
     public User(String username, String password) {
         this(username, password, false);
     }
@@ -40,6 +38,14 @@ public class User implements Serializable {
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
+    }
+
+    @Override
+    public String toString() {
+        return "[UserID: " + userID
+                + ", Username: " + username
+                + ", IsAdmin: " + isAdmin
+                + "]";
     }
 
 }

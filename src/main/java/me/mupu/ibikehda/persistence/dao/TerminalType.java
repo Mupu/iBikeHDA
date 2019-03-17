@@ -6,7 +6,6 @@ import me.mupu.ibikehda.persistence.dao.enums.TerminalTypeEnum;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,5 +24,13 @@ public class TerminalType implements Serializable {
 
     public TerminalType(TerminalTypeEnum type) {
         this.type = type;
+    }
+
+
+    @Override
+    public String toString() {
+        return "[TerminalTypeID: " + terminalTypeID
+                + ", Type: " + type
+                + "]";
     }
 }

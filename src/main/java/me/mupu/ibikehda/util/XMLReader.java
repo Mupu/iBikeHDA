@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class XMLReader {
 
-
     public XMLReader(File xmlfile) {
         ArrayList<Bike> bikes = new ArrayList<>();
         readData(bikes);
