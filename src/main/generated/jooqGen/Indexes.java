@@ -6,6 +6,8 @@ package jooqGen;
 
 import javax.annotation.Generated;
 
+import jooqGen.tables.Bike;
+import jooqGen.tables.Bikestatus;
 import jooqGen.tables.Plugtype;
 import jooqGen.tables.Station;
 import jooqGen.tables.StationPlugtype;
@@ -34,12 +36,22 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
+    public static final Index BIKE_BIKE_BB_FK = Indexes0.BIKE_BIKE_BB_FK;
+    public static final Index BIKE_BIKE_BU_FK = Indexes0.BIKE_BIKE_BU_FK;
+    public static final Index BIKE_BIKE_CS_FK = Indexes0.BIKE_BIKE_CS_FK;
+    public static final Index BIKE_BIKE_MS_FK = Indexes0.BIKE_BIKE_MS_FK;
+    public static final Index BIKE_PRIMARY = Indexes0.BIKE_PRIMARY;
+    public static final Index BIKESTATUS_PRIMARY = Indexes0.BIKESTATUS_PRIMARY;
+    public static final Index BIKESTATUS_STATUS = Indexes0.BIKESTATUS_STATUS;
     public static final Index PLUGTYPE_PRIMARY = Indexes0.PLUGTYPE_PRIMARY;
+    public static final Index PLUGTYPE_TYPE = Indexes0.PLUGTYPE_TYPE;
+    public static final Index STATION_PHONENUMBER = Indexes0.STATION_PHONENUMBER;
     public static final Index STATION_PRIMARY = Indexes0.STATION_PRIMARY;
     public static final Index STATION_STATION_TERMINALTYPE_FK = Indexes0.STATION_STATION_TERMINALTYPE_FK;
     public static final Index STATION_PLUGTYPE_PRIMARY = Indexes0.STATION_PLUGTYPE_PRIMARY;
     public static final Index STATION_PLUGTYPE_STATION_PLUGTYPE_PT_FK = Indexes0.STATION_PLUGTYPE_STATION_PLUGTYPE_PT_FK;
     public static final Index TERMINALTYPE_PRIMARY = Indexes0.TERMINALTYPE_PRIMARY;
+    public static final Index TERMINALTYPE_TYPE = Indexes0.TERMINALTYPE_TYPE;
     public static final Index USER_PRIMARY = Indexes0.USER_PRIMARY;
     public static final Index USER_USERNAME = Indexes0.USER_USERNAME;
 
@@ -48,12 +60,22 @@ public class Indexes {
     // -------------------------------------------------------------------------
 
     private static class Indexes0 {
+        public static Index BIKE_BIKE_BB_FK = Internal.createIndex("Bike_BB_FK", Bike.BIKE, new OrderField[] { Bike.BIKE.BIKESTATUSID }, false);
+        public static Index BIKE_BIKE_BU_FK = Internal.createIndex("Bike_BU_FK", Bike.BIKE, new OrderField[] { Bike.BIKE.USERID }, false);
+        public static Index BIKE_BIKE_CS_FK = Internal.createIndex("Bike_CS_FK", Bike.BIKE, new OrderField[] { Bike.BIKE.CURRENTSTATIONID }, false);
+        public static Index BIKE_BIKE_MS_FK = Internal.createIndex("Bike_MS_FK", Bike.BIKE, new OrderField[] { Bike.BIKE.MAINSTATIONID }, false);
+        public static Index BIKE_PRIMARY = Internal.createIndex("PRIMARY", Bike.BIKE, new OrderField[] { Bike.BIKE.BIKEID }, true);
+        public static Index BIKESTATUS_PRIMARY = Internal.createIndex("PRIMARY", Bikestatus.BIKESTATUS, new OrderField[] { Bikestatus.BIKESTATUS.BIKESTATUSID }, true);
+        public static Index BIKESTATUS_STATUS = Internal.createIndex("Status", Bikestatus.BIKESTATUS, new OrderField[] { Bikestatus.BIKESTATUS.STATUS }, true);
         public static Index PLUGTYPE_PRIMARY = Internal.createIndex("PRIMARY", Plugtype.PLUGTYPE, new OrderField[] { Plugtype.PLUGTYPE.PLUGTYPEID }, true);
+        public static Index PLUGTYPE_TYPE = Internal.createIndex("Type", Plugtype.PLUGTYPE, new OrderField[] { Plugtype.PLUGTYPE.TYPE }, true);
+        public static Index STATION_PHONENUMBER = Internal.createIndex("PhoneNumber", Station.STATION, new OrderField[] { Station.STATION.PHONENUMBER }, true);
         public static Index STATION_PRIMARY = Internal.createIndex("PRIMARY", Station.STATION, new OrderField[] { Station.STATION.STATIONID }, true);
         public static Index STATION_STATION_TERMINALTYPE_FK = Internal.createIndex("Station_TerminalType_FK", Station.STATION, new OrderField[] { Station.STATION.TERMINALTYPEID }, false);
         public static Index STATION_PLUGTYPE_PRIMARY = Internal.createIndex("PRIMARY", StationPlugtype.STATION_PLUGTYPE, new OrderField[] { StationPlugtype.STATION_PLUGTYPE.STATIONID, StationPlugtype.STATION_PLUGTYPE.PLUGTYPEID }, true);
         public static Index STATION_PLUGTYPE_STATION_PLUGTYPE_PT_FK = Internal.createIndex("Station_PlugType_PT_FK", StationPlugtype.STATION_PLUGTYPE, new OrderField[] { StationPlugtype.STATION_PLUGTYPE.PLUGTYPEID }, false);
         public static Index TERMINALTYPE_PRIMARY = Internal.createIndex("PRIMARY", Terminaltype.TERMINALTYPE, new OrderField[] { Terminaltype.TERMINALTYPE.TERMINALTYPEID }, true);
+        public static Index TERMINALTYPE_TYPE = Internal.createIndex("Type", Terminaltype.TERMINALTYPE, new OrderField[] { Terminaltype.TERMINALTYPE.TYPE }, true);
         public static Index USER_PRIMARY = Internal.createIndex("PRIMARY", User.USER, new OrderField[] { User.USER.USERID }, true);
         public static Index USER_USERNAME = Internal.createIndex("Username", User.USER, new OrderField[] { User.USER.USERNAME }, true);
     }

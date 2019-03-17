@@ -6,6 +6,8 @@ package jooqGen;
 
 import javax.annotation.Generated;
 
+import jooqGen.tables.Bike;
+import jooqGen.tables.Bikestatus;
 import jooqGen.tables.Plugtype;
 import jooqGen.tables.Station;
 import jooqGen.tables.StationPlugtype;
@@ -25,6 +27,16 @@ import jooqGen.tables.User;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
+
+    /**
+     * The table <code>ibikehda.bike</code>.
+     */
+    public static final Bike BIKE = jooqGen.tables.Bike.BIKE;
+
+    /**
+     * The table <code>ibikehda.bikestatus</code>.
+     */
+    public static final Bikestatus BIKESTATUS = jooqGen.tables.Bikestatus.BIKESTATUS;
 
     /**
      * The table <code>ibikehda.plugtype</code>.

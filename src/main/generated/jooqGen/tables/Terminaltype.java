@@ -42,7 +42,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Terminaltype extends TableImpl<TerminaltypeRecord> {
 
-    private static final long serialVersionUID = -1833099349;
+    private static final long serialVersionUID = 36590817;
 
     /**
      * The reference instance of <code>ibikehda.terminaltype</code>
@@ -113,7 +113,7 @@ public class Terminaltype extends TableImpl<TerminaltypeRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.TERMINALTYPE_PRIMARY);
+        return Arrays.<Index>asList(Indexes.TERMINALTYPE_PRIMARY, Indexes.TERMINALTYPE_TYPE);
     }
 
     /**
@@ -137,7 +137,7 @@ public class Terminaltype extends TableImpl<TerminaltypeRecord> {
      */
     @Override
     public List<UniqueKey<TerminaltypeRecord>> getKeys() {
-        return Arrays.<UniqueKey<TerminaltypeRecord>>asList(Keys.KEY_TERMINALTYPE_PRIMARY);
+        return Arrays.<UniqueKey<TerminaltypeRecord>>asList(Keys.KEY_TERMINALTYPE_PRIMARY, Keys.KEY_TERMINALTYPE_TYPE);
     }
 
     /**

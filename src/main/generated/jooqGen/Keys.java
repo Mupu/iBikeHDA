@@ -6,11 +6,15 @@ package jooqGen;
 
 import javax.annotation.Generated;
 
+import jooqGen.tables.Bike;
+import jooqGen.tables.Bikestatus;
 import jooqGen.tables.Plugtype;
 import jooqGen.tables.Station;
 import jooqGen.tables.StationPlugtype;
 import jooqGen.tables.Terminaltype;
 import jooqGen.tables.User;
+import jooqGen.tables.records.BikeRecord;
+import jooqGen.tables.records.BikestatusRecord;
 import jooqGen.tables.records.PlugtypeRecord;
 import jooqGen.tables.records.StationPlugtypeRecord;
 import jooqGen.tables.records.StationRecord;
@@ -51,10 +55,16 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<BikeRecord> KEY_BIKE_PRIMARY = UniqueKeys0.KEY_BIKE_PRIMARY;
+    public static final UniqueKey<BikestatusRecord> KEY_BIKESTATUS_PRIMARY = UniqueKeys0.KEY_BIKESTATUS_PRIMARY;
+    public static final UniqueKey<BikestatusRecord> KEY_BIKESTATUS_STATUS = UniqueKeys0.KEY_BIKESTATUS_STATUS;
     public static final UniqueKey<PlugtypeRecord> KEY_PLUGTYPE_PRIMARY = UniqueKeys0.KEY_PLUGTYPE_PRIMARY;
+    public static final UniqueKey<PlugtypeRecord> KEY_PLUGTYPE_TYPE = UniqueKeys0.KEY_PLUGTYPE_TYPE;
     public static final UniqueKey<StationRecord> KEY_STATION_PRIMARY = UniqueKeys0.KEY_STATION_PRIMARY;
+    public static final UniqueKey<StationRecord> KEY_STATION_PHONENUMBER = UniqueKeys0.KEY_STATION_PHONENUMBER;
     public static final UniqueKey<StationPlugtypeRecord> KEY_STATION_PLUGTYPE_PRIMARY = UniqueKeys0.KEY_STATION_PLUGTYPE_PRIMARY;
     public static final UniqueKey<TerminaltypeRecord> KEY_TERMINALTYPE_PRIMARY = UniqueKeys0.KEY_TERMINALTYPE_PRIMARY;
+    public static final UniqueKey<TerminaltypeRecord> KEY_TERMINALTYPE_TYPE = UniqueKeys0.KEY_TERMINALTYPE_TYPE;
     public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = UniqueKeys0.KEY_USER_PRIMARY;
     public static final UniqueKey<UserRecord> KEY_USER_USERNAME = UniqueKeys0.KEY_USER_USERNAME;
 
@@ -62,6 +72,10 @@ public class Keys {
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<BikeRecord, BikestatusRecord> BIKE_BB_FK = ForeignKeys0.BIKE_BB_FK;
+    public static final ForeignKey<BikeRecord, UserRecord> BIKE_BU_FK = ForeignKeys0.BIKE_BU_FK;
+    public static final ForeignKey<BikeRecord, StationRecord> BIKE_MS_FK = ForeignKeys0.BIKE_MS_FK;
+    public static final ForeignKey<BikeRecord, StationRecord> BIKE_CS_FK = ForeignKeys0.BIKE_CS_FK;
     public static final ForeignKey<StationRecord, TerminaltypeRecord> STATION_TERMINALTYPE_FK = ForeignKeys0.STATION_TERMINALTYPE_FK;
     public static final ForeignKey<StationPlugtypeRecord, StationRecord> STATION_PLUGTYPE_S_FK = ForeignKeys0.STATION_PLUGTYPE_S_FK;
     public static final ForeignKey<StationPlugtypeRecord, PlugtypeRecord> STATION_PLUGTYPE_PT_FK = ForeignKeys0.STATION_PLUGTYPE_PT_FK;
@@ -78,15 +92,25 @@ public class Keys {
     }
 
     private static class UniqueKeys0 {
+        public static final UniqueKey<BikeRecord> KEY_BIKE_PRIMARY = Internal.createUniqueKey(Bike.BIKE, "KEY_bike_PRIMARY", Bike.BIKE.BIKEID);
+        public static final UniqueKey<BikestatusRecord> KEY_BIKESTATUS_PRIMARY = Internal.createUniqueKey(Bikestatus.BIKESTATUS, "KEY_bikestatus_PRIMARY", Bikestatus.BIKESTATUS.BIKESTATUSID);
+        public static final UniqueKey<BikestatusRecord> KEY_BIKESTATUS_STATUS = Internal.createUniqueKey(Bikestatus.BIKESTATUS, "KEY_bikestatus_Status", Bikestatus.BIKESTATUS.STATUS);
         public static final UniqueKey<PlugtypeRecord> KEY_PLUGTYPE_PRIMARY = Internal.createUniqueKey(Plugtype.PLUGTYPE, "KEY_plugtype_PRIMARY", Plugtype.PLUGTYPE.PLUGTYPEID);
+        public static final UniqueKey<PlugtypeRecord> KEY_PLUGTYPE_TYPE = Internal.createUniqueKey(Plugtype.PLUGTYPE, "KEY_plugtype_Type", Plugtype.PLUGTYPE.TYPE);
         public static final UniqueKey<StationRecord> KEY_STATION_PRIMARY = Internal.createUniqueKey(Station.STATION, "KEY_station_PRIMARY", Station.STATION.STATIONID);
+        public static final UniqueKey<StationRecord> KEY_STATION_PHONENUMBER = Internal.createUniqueKey(Station.STATION, "KEY_station_PhoneNumber", Station.STATION.PHONENUMBER);
         public static final UniqueKey<StationPlugtypeRecord> KEY_STATION_PLUGTYPE_PRIMARY = Internal.createUniqueKey(StationPlugtype.STATION_PLUGTYPE, "KEY_station_plugtype_PRIMARY", StationPlugtype.STATION_PLUGTYPE.STATIONID, StationPlugtype.STATION_PLUGTYPE.PLUGTYPEID);
         public static final UniqueKey<TerminaltypeRecord> KEY_TERMINALTYPE_PRIMARY = Internal.createUniqueKey(Terminaltype.TERMINALTYPE, "KEY_terminaltype_PRIMARY", Terminaltype.TERMINALTYPE.TERMINALTYPEID);
+        public static final UniqueKey<TerminaltypeRecord> KEY_TERMINALTYPE_TYPE = Internal.createUniqueKey(Terminaltype.TERMINALTYPE, "KEY_terminaltype_Type", Terminaltype.TERMINALTYPE.TYPE);
         public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = Internal.createUniqueKey(User.USER, "KEY_user_PRIMARY", User.USER.USERID);
         public static final UniqueKey<UserRecord> KEY_USER_USERNAME = Internal.createUniqueKey(User.USER, "KEY_user_Username", User.USER.USERNAME);
     }
 
     private static class ForeignKeys0 {
+        public static final ForeignKey<BikeRecord, BikestatusRecord> BIKE_BB_FK = Internal.createForeignKey(jooqGen.Keys.KEY_BIKESTATUS_PRIMARY, Bike.BIKE, "Bike_BB_FK", Bike.BIKE.BIKESTATUSID);
+        public static final ForeignKey<BikeRecord, UserRecord> BIKE_BU_FK = Internal.createForeignKey(jooqGen.Keys.KEY_USER_PRIMARY, Bike.BIKE, "Bike_BU_FK", Bike.BIKE.USERID);
+        public static final ForeignKey<BikeRecord, StationRecord> BIKE_MS_FK = Internal.createForeignKey(jooqGen.Keys.KEY_STATION_PRIMARY, Bike.BIKE, "Bike_MS_FK", Bike.BIKE.MAINSTATIONID);
+        public static final ForeignKey<BikeRecord, StationRecord> BIKE_CS_FK = Internal.createForeignKey(jooqGen.Keys.KEY_STATION_PRIMARY, Bike.BIKE, "Bike_CS_FK", Bike.BIKE.CURRENTSTATIONID);
         public static final ForeignKey<StationRecord, TerminaltypeRecord> STATION_TERMINALTYPE_FK = Internal.createForeignKey(jooqGen.Keys.KEY_TERMINALTYPE_PRIMARY, Station.STATION, "Station_TerminalType_FK", Station.STATION.TERMINALTYPEID);
         public static final ForeignKey<StationPlugtypeRecord, StationRecord> STATION_PLUGTYPE_S_FK = Internal.createForeignKey(jooqGen.Keys.KEY_STATION_PRIMARY, StationPlugtype.STATION_PLUGTYPE, "Station_PlugType_S_FK", StationPlugtype.STATION_PLUGTYPE.STATIONID);
         public static final ForeignKey<StationPlugtypeRecord, PlugtypeRecord> STATION_PLUGTYPE_PT_FK = Internal.createForeignKey(jooqGen.Keys.KEY_PLUGTYPE_PRIMARY, StationPlugtype.STATION_PLUGTYPE, "Station_PlugType_PT_FK", StationPlugtype.STATION_PLUGTYPE.PLUGTYPEID);

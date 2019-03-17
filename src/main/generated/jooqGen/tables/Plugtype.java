@@ -42,7 +42,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Plugtype extends TableImpl<PlugtypeRecord> {
 
-    private static final long serialVersionUID = 20861171;
+    private static final long serialVersionUID = -1109100187;
 
     /**
      * The reference instance of <code>ibikehda.plugtype</code>
@@ -113,7 +113,7 @@ public class Plugtype extends TableImpl<PlugtypeRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PLUGTYPE_PRIMARY);
+        return Arrays.<Index>asList(Indexes.PLUGTYPE_PRIMARY, Indexes.PLUGTYPE_TYPE);
     }
 
     /**
@@ -137,7 +137,7 @@ public class Plugtype extends TableImpl<PlugtypeRecord> {
      */
     @Override
     public List<UniqueKey<PlugtypeRecord>> getKeys() {
-        return Arrays.<UniqueKey<PlugtypeRecord>>asList(Keys.KEY_PLUGTYPE_PRIMARY);
+        return Arrays.<UniqueKey<PlugtypeRecord>>asList(Keys.KEY_PLUGTYPE_PRIMARY, Keys.KEY_PLUGTYPE_TYPE);
     }
 
     /**

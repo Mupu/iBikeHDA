@@ -42,7 +42,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Station extends TableImpl<StationRecord> {
 
-    private static final long serialVersionUID = -258813331;
+    private static final long serialVersionUID = -610728753;
 
     /**
      * The reference instance of <code>ibikehda.station</code>
@@ -138,7 +138,7 @@ public class Station extends TableImpl<StationRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.STATION_PRIMARY, Indexes.STATION_STATION_TERMINALTYPE_FK);
+        return Arrays.<Index>asList(Indexes.STATION_PHONENUMBER, Indexes.STATION_PRIMARY, Indexes.STATION_STATION_TERMINALTYPE_FK);
     }
 
     /**
@@ -162,7 +162,7 @@ public class Station extends TableImpl<StationRecord> {
      */
     @Override
     public List<UniqueKey<StationRecord>> getKeys() {
-        return Arrays.<UniqueKey<StationRecord>>asList(Keys.KEY_STATION_PRIMARY);
+        return Arrays.<UniqueKey<StationRecord>>asList(Keys.KEY_STATION_PRIMARY, Keys.KEY_STATION_PHONENUMBER);
     }
 
     /**

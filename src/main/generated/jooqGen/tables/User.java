@@ -42,7 +42,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = 526058821;
+    private static final long serialVersionUID = -1787125916;
 
     /**
      * The reference instance of <code>ibikehda.user</code>
@@ -70,7 +70,7 @@ public class User extends TableImpl<UserRecord> {
     /**
      * The column <code>ibikehda.user.Password</code>.
      */
-    public final TableField<UserRecord, String> PASSWORD = createField("Password", org.jooq.impl.SQLDataType.VARCHAR(500).nullable(false), this, "");
+    public final TableField<UserRecord, String> PASSWORD = createField("Password", org.jooq.impl.SQLDataType.VARCHAR(600).nullable(false), this, "");
 
     /**
      * The column <code>ibikehda.user.IsAdmin</code>.

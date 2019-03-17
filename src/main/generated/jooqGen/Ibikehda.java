@@ -10,6 +10,8 @@ import java.util.List;
 
 import javax.annotation.Generated;
 
+import jooqGen.tables.Bike;
+import jooqGen.tables.Bikestatus;
 import jooqGen.tables.Plugtype;
 import jooqGen.tables.Station;
 import jooqGen.tables.StationPlugtype;
@@ -34,12 +36,22 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Ibikehda extends SchemaImpl {
 
-    private static final long serialVersionUID = 1181162879;
+    private static final long serialVersionUID = -1110656759;
 
     /**
      * The reference instance of <code>ibikehda</code>
      */
     public static final Ibikehda IBIKEHDA = new Ibikehda();
+
+    /**
+     * The table <code>ibikehda.bike</code>.
+     */
+    public final Bike BIKE = jooqGen.tables.Bike.BIKE;
+
+    /**
+     * The table <code>ibikehda.bikestatus</code>.
+     */
+    public final Bikestatus BIKESTATUS = jooqGen.tables.Bikestatus.BIKESTATUS;
 
     /**
      * The table <code>ibikehda.plugtype</code>.
@@ -91,6 +103,8 @@ public class Ibikehda extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
+            Bike.BIKE,
+            Bikestatus.BIKESTATUS,
             Plugtype.PLUGTYPE,
             Station.STATION,
             StationPlugtype.STATION_PLUGTYPE,
