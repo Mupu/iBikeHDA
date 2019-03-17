@@ -18,7 +18,7 @@ public class ClientExample {
 
             var dw = (DataWrapper) ois.readObject();
 
-            if (dw.getCmd().equals("bikeList")) {
+            if ("bikeList".equals(dw.getCmd())) {
                 var d = (DataPackageLikeBikeListExample) dw.getData();
                 System.out.println("mathod 1 " + d);
                 d.getStations().forEach(System.out::println);
