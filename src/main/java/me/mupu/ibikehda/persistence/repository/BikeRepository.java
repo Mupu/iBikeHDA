@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface BikeRepository extends JpaRepository<Bike, Long>  {
 
-    List<Bike> findAllByBikeNumber(int minPercent);
+    List<Bike> findAllByBikeNumber(int number);
 
     List<Bike> findAllByDesignationIsLike(String designation);
 
